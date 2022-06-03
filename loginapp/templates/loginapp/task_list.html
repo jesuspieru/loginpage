@@ -6,28 +6,57 @@
 {% endif %}
 
 <hr>
-<h1>My To Do List</h1>
+
+{% if user.is_authenticated %}
+<h1>My Blogs</h1>
+{% else %}
+  <h1> Principal page</h1>
+{% endif %}
+
+<hr>
+{% if user.is_authenticated %}
 <a href="{% url 'task-create' %}">Add Task</a>
+{% endif %}
+
 
 <form method="get">
     <input type="text" name="search-area" value="{{search_input}}">
     <input type="submit" value="Search">
 </form>
 
-<table>
-    <tr>
-        <th>Item</th>
-        <th></th>
-        <th></th>
-    </tr>
-    {% for task in tasks %}
-    <tr>
-        <td>{{task.title}}</td>
 
-        <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
-        <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
-    </tr>
-    {% empty %}
-    <h3>No items in list</h3>
-    {% endfor %}
-</table>
+{% if object_list %}
+<div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+    <h1>Listado de Blogs</h1>
+    <div class="table-responsive py-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>User</th>
+                    <th>Title</th>
+                    <th>Created</th>
+                    <th colspan="2">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{task.user}}</td>
+                    <td>{{task.title}}</td>
+                    <td>{{task.create}}</td>
+                    {% if user.is_authenticated %}
+                    <td><a href="{% url 'task-update' task.id %}" class="btn btn-info">Edit</a></td>
+                    <td><a href="{% url 'task-delete' task.id %}" class="btn btn-danger btnEliminacion">Delete</a></td>
+                    {% endif %}
+                    <td><a href="{% url 'task-detail' task.id %}" class="btn btn-success">Detail</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+  <h1> No hay ningun blog!</h1>
+{% endif %}

@@ -1,1 +1,7 @@
-<h1>Task: {{task}} </h1>
+<a href="{% url 'tasks'%}">Go back</a>
+<div>
+    <h1>USER: {{object.user}}</h1>
+    <h1>TITLE: {{object.title}}</h1>
+    <h1> DESCRIPTION: {{object.description}} </h1>
+    <h1>DATE: {{object.create}}</h1>
+</div>
