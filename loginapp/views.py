@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -9,6 +10,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.core.paginator import Paginator
+from requests import request
 
 from .models import task
 
@@ -55,14 +58,32 @@ class tasklist(ListView):
             if search_input:
                 context['tasks'] = context['tasks'].filter(title__icontains=search_input)
                 context['search_input'] = search_input
+
+            tareas = context['tasks'].order_by('id')
+            page = self.request.GET.get('page',1)
+            try:
+                paginator = Paginator(tareas,10)
+                context['tasks'] = paginator.page(page)
+            except:
+                raise Http404
             
         else:
-            context['tasks'] = task.objects.all()
+            context['tasks'] = task.objects.all().order_by('id')
+          
+
             search_input = self.request.GET.get('search-area') or ""
             if search_input:
                 context['tasks'] = context['tasks'].filter(title__icontains=search_input)
                 context['search_input'] = search_input
-            
+                 
+            tareas = context['tasks'].order_by('id')
+            page = self.request.GET.get('page',1)
+            try:
+                paginator = Paginator(tareas,10)
+                context['tasks'] = paginator.page(page)
+            except:
+                raise Http404
+
         return context
 
 class taskdetail( DetailView):
