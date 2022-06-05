@@ -4,6 +4,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
@@ -35,6 +36,8 @@ class registerpage(FormView):
         if self.request.user.is_authenticated:
             return redirect('tasks')
         return super(registerpage, self).get(*args, **kwargs)
+
+
 
 
 class tasklist(ListView):
@@ -69,7 +72,7 @@ class taskdetail( DetailView):
 
 class taskcreate(LoginRequiredMixin, CreateView):
     model = task
-    fields = ['title', 'description', 'complete']
+    fields = ['title','picture', 'description', 'complete']
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
@@ -78,7 +81,7 @@ class taskcreate(LoginRequiredMixin, CreateView):
     
 class taskupdate(LoginRequiredMixin, UpdateView):
     model = task
-    fields = ['title', 'description', 'complete']
+    fields = ['title','picture', 'description', 'complete']
     success_url = reverse_lazy('tasks')
 
 class taskdelete(LoginRequiredMixin, DeleteView):

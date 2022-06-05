@@ -1,7 +1,8 @@
 <a href="{% url 'tasks'%}">Go back</a>
 <div>
-    <h1>USER: {{object.user}}</h1>
-    <h1>TITLE: {{object.title}}</h1>
-    <h1> DESCRIPTION: {{object.description}} </h1>
-    <h1>DATE: {{object.create}}</h1>
+    <h1>Usuario: {{object.user}}</h1>
+    <h1>Titulo: {{object.title}}</h1>
+    <h1>Foto: <img src="{{object.picture.url }}" width="400"></h1>
+    <h1>Descripcion: {{object.description}} </h1>
+    <h1>Fecha: {{object.create}}</h1>
 </div>
