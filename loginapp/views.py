@@ -11,7 +11,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.core.paginator import Paginator
-from requests import request
 
 from .models import task
 
@@ -62,7 +61,7 @@ class tasklist(ListView):
             tareas = context['tasks'].order_by('id')
             page = self.request.GET.get('page',1)
             try:
-                paginator = Paginator(tareas,10)
+                paginator = Paginator(tareas,2)
                 context['tasks'] = paginator.page(page)
             except:
                 raise Http404
@@ -79,7 +78,7 @@ class tasklist(ListView):
             tareas = context['tasks'].order_by('id')
             page = self.request.GET.get('page',1)
             try:
-                paginator = Paginator(tareas,10)
+                paginator = Paginator(tareas,2)
                 context['tasks'] = paginator.page(page)
             except:
                 raise Http404

@@ -1,3 +1,7 @@
+{% extends 'loginapp/main.html' %}
+{% block content %}
+
+
 {% if request.user.is_authenticated %}
 <p>{{request.user}}</p>
 <a href="{% url 'logout' %}">Logout</a>
@@ -21,7 +25,7 @@
 
 <form method="get">
     <input type="text" name="search-area" value="{{search_input}}">
-    <input type="submit" value="Search">
+    <input class="button4" type="submit" value="Search">
 </form>
 
 
@@ -85,3 +89,6 @@
 {% else %}
   <h1> No hay ningun blog!</h1>
 {% endif %}
+
+{% endblock content %}
+

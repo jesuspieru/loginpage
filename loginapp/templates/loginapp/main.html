@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Actividades</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+
+    <style>
+        a, .button1, .button2, .button3, .button4, .button5 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            background-color: green;
+            border: 2px solid black;
+            color: white;
+            padding: 5px 5px;
+            text-align: center;
+            display: inline-block;
+            font-size: 18px;
+            margin: 5px 5px;
+            cursor: pointer;
+            text-decoration:none;
+        }
+
+        body {
+            background-color: #FAFAFA;
+            font-family: 'Nunito', sans-serif;
+            padding-top: 50px;
+            font-weight: bold;
+        }
+
+        .container{
+            max-width: 550px;
+            margin: auto;
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+</body>
+</html>

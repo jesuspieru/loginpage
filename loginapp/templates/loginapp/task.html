@@ -1,3 +1,6 @@
+{% extends 'loginapp/main.html' %}
+{% block content %}
+
 <a href="{% url 'tasks'%}">Go back</a>
 <div>
     <h1>Usuario: {{object.user}}</h1>
@@ -8,3 +11,5 @@
     <h1>Descripcion: {{object.description}} </h1>
     <h1>Fecha: {{object.create}}</h1>
 </div>
+
+{% endblock content %}
