@@ -1,33 +1,27 @@
-{% extends 'loginapp/main.html' %}
-{% block content %}
+    {% extends 'loginapp/main.html' %}
+    {% block content %}
+
+    
+
+    <hr>
+
+        {% if user.is_authenticated %}
+            <h1>Mis Blogs</h1>
+        {% else %}
+            <h1>Pagina Principal</h1>
+        {% endif %}
+
+    <hr>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'task-create' %}">Añadir blog</a>
+    {% endif %}
 
 
-{% if request.user.is_authenticated %}
-<p>{{request.user}}</p>
-<a href="{% url 'logout' %}">Logout</a>
-{% else %}
-<a href="{% url 'login' %}">Login</a>
-{% endif %}
-
-<hr>
-
-{% if user.is_authenticated %}
-<h1>Mis Blogs</h1>
-{% else %}
-  <h1>Pagina Principal</h1>
-{% endif %}
-
-<hr>
-{% if user.is_authenticated %}
-<a href="{% url 'task-create' %}">Añadir blog</a>
-{% endif %}
-
-
-<form method="get">
-    <input type="text" name="search-area" value="{{search_input}}">
-    <input class="button4" type="submit" value="Search">
-</form>
-
+    <form method="get">
+        <input type="text" name="search-area" value="{{search_input}}">
+        <input class="button4" type="submit" value="Search">
+    </form>
 
 {% if object_list %}
 <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">

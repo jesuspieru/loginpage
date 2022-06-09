@@ -2,11 +2,11 @@
 {% block content %}
 
 <h3>Nuevo blog</h3>
-<a href="{% url 'tasks' %}">Go back</a>
+
 <form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
     {{form.as_p}}
     <input class="button3" type="submit" value="Submit">
 </form>
-
+<a href="{% url 'tasks'%}">Go back</a>
 {% endblock content %}

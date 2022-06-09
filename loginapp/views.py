@@ -108,3 +108,11 @@ class taskdelete(LoginRequiredMixin, DeleteView):
     model = task
     context_object_name = 'task'
     success_url = reverse_lazy('tasks')
+
+def about(request):
+
+    about = "Sobre mi..."
+    
+    context= {'about': about}
+        
+    return render(request, 'loginapp/about.html', context)

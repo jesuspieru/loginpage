@@ -8,6 +8,8 @@
     <input class="button2" type="submit" value="Register">
 </form>
 
-<p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+<p><a href="{% url 'login' %}">Login</a>Already have an account? </p>
+
+<a href="{% url 'tasks'%}">Go back</a>
 
 {% endblock content %}
