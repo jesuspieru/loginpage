@@ -74,7 +74,7 @@
             <li><a class="active" href="{% url 'tasks' %}">Home</a></li>
             
             {% if request.user.is_authenticated %}
-    
+                <li><a href="{% url 'edit-profile' %}">Editar perfil</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>

@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
 from django.core.paginator import Paginator
 
@@ -39,8 +39,13 @@ class registerpage(FormView):
             return redirect('tasks')
         return super(registerpage, self).get(*args, **kwargs)
 
+class editprofile(UpdateView):
+    form_class = UserChangeForm
+    template_name = 'loginapp/edit_profile.html'
+    success_url = reverse_lazy('tasks')
 
-
+    def get_object(self):
+        return self.request.user
 
 class tasklist(ListView):
     model = task
