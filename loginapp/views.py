@@ -8,10 +8,11 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login
 from django.core.paginator import Paginator
 
+from loginapp.forms import UserCreateForm
+from django.contrib import messages
 from .models import task
 
 class customloginview(LoginView):
@@ -24,7 +25,7 @@ class customloginview(LoginView):
 
 class registerpage(FormView):
     template_name = 'loginapp/register.html'
-    form_class = UserCreationForm
+    form_class = UserCreateForm
     redirect_authenticated_user = True
     success_url = reverse_lazy('tasks')
 
@@ -38,14 +39,6 @@ class registerpage(FormView):
         if self.request.user.is_authenticated:
             return redirect('tasks')
         return super(registerpage, self).get(*args, **kwargs)
-
-class editprofile(UpdateView):
-    form_class = UserChangeForm
-    template_name = 'loginapp/edit_profile.html'
-    success_url = reverse_lazy('tasks')
-
-    def get_object(self):
-        return self.request.user
 
 class tasklist(ListView):
     model = task
