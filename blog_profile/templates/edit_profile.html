@@ -31,7 +31,7 @@
                             {{ user_form.email }}
                     </div>
                     <div class="form-group">
-                        <a href="{% url 'password_change'%}">Change Password</a>
+                        <a class="btn btn-primary" href="{% url 'password_change'%}">Change Password</a>
                         <hr>
 
                     </div>
@@ -39,12 +39,12 @@
                 </div>
             </div>
             <br><br>
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+            <button type="submit" class="btn btn-dark">Save Changes</button>
 
         </form>
     </div>
 
 
-<a href="{% url 'tasks'%}">Go back</a>
+<a class="btn btn-primary btn-sm" href="{% url 'tasks'%}">Go back</a>
 
 {% endblock content %}

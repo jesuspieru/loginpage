@@ -9,9 +9,9 @@
 
 </form>
 
-<p><a href="{% url 'register' %}">Register</a> Don't have an account?</p>
+<p>Don't have an account?<a class="btn btn-dark btn-sm" href="{% url 'register' %}">Register</a></p>
 
-<a href="{% url 'tasks'%}">Go back</a>
+<a class="btn btn-primary btn-sm" href="{% url 'tasks' %}">Go back</a>
 
 {% endblock content %}
 

@@ -5,11 +5,11 @@
 <form method="post">
     {% csrf_token %}
     {{form.as_p}}
-    <input class="button2" type="submit" value="Register">
+    <input class="btn btn-dark btn-sm" type="submit" value="Register">
 </form>
 
-<p><a href="{% url 'login' %}">Login</a>Already have an account? </p>
+<p>Already have an account?<a class="btn btn-dark btn-sm" href="{% url 'login' %}">Login</a></p>
 
-<a href="{% url 'tasks'%}">Go back</a>
+<a class="btn btn-primary btn-sm" href="{% url 'tasks'%}">Go back</a>
 
 {% endblock content %}

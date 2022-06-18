@@ -14,13 +14,13 @@
     <hr>
 
     {% if user.is_authenticated %}
-        <a href="{% url 'task-create' %}">Añadir blog</a>
+        <a class="btn btn-primary btn-sm" href="{% url 'task-create' %}">Add blog</a>
     {% endif %}
 
 
     <form method="get">
         <input type="text" name="search-area" value="{{search_input}}">
-        <input class="button4" type="submit" value="Search">
+        <input class="btn btn-secondary" type="submit" value="Search">
     </form>
 
 {% if object_list %}

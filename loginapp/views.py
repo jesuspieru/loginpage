@@ -109,7 +109,7 @@ class taskdelete(LoginRequiredMixin, DeleteView):
 
 def about(request):
 
-    about = "Sobre mi..."
+    about = "About me..."
     
     context= {'about': about}
         
