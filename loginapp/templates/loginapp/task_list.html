@@ -17,11 +17,18 @@
         <a class="btn btn-primary btn-sm" href="{% url 'task-create' %}">Add blog</a>
     {% endif %}
 
+    {% if search %}
+        <div class="alert alert-success" role="alert">
+            Busqueda con resultado!
+            {{search}}
+        </div>
+    {% endif %}
 
-    <form method="get">
-        <input type="text" name="search-area" value="{{search_input}}">
-        <input class="btn btn-secondary" type="submit" value="Search">
-    </form>
+    {% if search == "" %}
+        <div class="alert alert-danger" role="alert">
+            No se encontraron resultados
+        </div>
+    {% endif %}
 
 {% if object_list %}
 <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
@@ -54,9 +61,7 @@
                 {% endfor %}
             </tbody>
         </table>
-
-
-        
+    
     </div>
 
     <div class="pagination">
@@ -76,7 +81,6 @@
             {% endif %}
         </span>
     </div>
-
 
 </div>
 

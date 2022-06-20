@@ -56,6 +56,11 @@ class tasklist(ListView):
                 context['tasks'] = context['tasks'].filter(title__icontains=search_input)
                 context['search_input'] = search_input
 
+                if not context['tasks']:
+                    context['search'] = ""
+                else:
+                    context['search'] = search_input
+
             tareas = context['tasks'].order_by('id')
             page = self.request.GET.get('page',1)
             try:
@@ -72,6 +77,11 @@ class tasklist(ListView):
             if search_input:
                 context['tasks'] = context['tasks'].filter(title__icontains=search_input)
                 context['search_input'] = search_input
+
+                if not context['tasks']:
+                    context['search'] = ""
+                else:
+                    context['search'] = search_input
                  
             tareas = context['tasks'].order_by('id')
             page = self.request.GET.get('page',1)
