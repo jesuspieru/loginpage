@@ -8,6 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog de Actividades</title>
 
+    <style>
+      body
+      {
+         padding-bottom: 10%;
+      }
+    </style>
+
 </head>
 <body>
 
@@ -27,7 +34,6 @@
                 {% endif %}
                 <a class="nav-item nav-link" href="{% url 'about' %}">About</a>
                
-
               </div>
               <form method="get" class="form-inline my-2 my-lg-0">
                 <div class="row">
@@ -43,12 +49,17 @@
                 </div>
             </div>
           </nav>
-
-    
+   
         {% block content %}
 
         {% endblock content %}
 
-
 </body>
+
+  <footer id="sticky-footer" class="fixed-bottom flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Blog Coderhouse</small>
+    </div>
+  </footer>
+
 </html>

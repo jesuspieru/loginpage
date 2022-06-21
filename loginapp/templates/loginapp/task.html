@@ -2,14 +2,23 @@
 {% block content %}
 
 <div>
-    <h1>User: {{object.user}}</h1>
-    <h1>Title: {{object.title}}</h1>
+    <br>
+    <h3><b>Usuario:</b> {{object.user}}</h3>
+    <br> 
+    <h3><b>Título:</b> {{object.title}}</h3>
+    <br> 
     {% if object.picture %}
-    <h1>Photo: </h1>
-    <img src="{{object.picture.url }}" width="400">
+    <img src="{{object.picture.url }}" width="600" height="600" style="border:1px solid">
     {% endif %}
-    <h1>Description: {{object.description}} </h1>
-    <h1>Date: {{object.create}}</h1>
+    <br>
+    <br> 
+    <h3><b>Descripción:</b></h3>
+    <h4>{{object.description}} </h4>
+    <br> 
+    <h3><b>Fecha:</b> {{object.create}}</h3>
+    <br> 
+
 </div>
-<a class="btn btn-primary btn-sm" href="{% url 'tasks'%}">Go back</a>
+<a class="btn btn-outline-success" href="{% url 'tasks'%}" role="button">Go back</a>
+
 {% endblock content %}

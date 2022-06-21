@@ -64,7 +64,7 @@ class tasklist(ListView):
             tareas = context['tasks'].order_by('id')
             page = self.request.GET.get('page',1)
             try:
-                paginator = Paginator(tareas,2)
+                paginator = Paginator(tareas,5)
                 context['tasks'] = paginator.page(page)
             except:
                 raise Http404
@@ -86,7 +86,7 @@ class tasklist(ListView):
             tareas = context['tasks'].order_by('id')
             page = self.request.GET.get('page',1)
             try:
-                paginator = Paginator(tareas,2)
+                paginator = Paginator(tareas,5)
                 context['tasks'] = paginator.page(page)
             except:
                 raise Http404

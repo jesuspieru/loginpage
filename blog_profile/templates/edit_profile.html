@@ -1,10 +1,7 @@
 {% extends 'loginapp/main.html' %}
 {% block content %}
 
-<h1>Editar perfil</h1>
-
-
-{% block title %}Profile Page{% endblock title %}
+{% block title %}<h1>Editar perfil</h1>{% endblock title %}
 
 
     {% if user_form.errors %}
@@ -31,6 +28,7 @@
                             {{ user_form.email }}
                     </div>
                     <div class="form-group">
+                        <br> 
                         <a class="btn btn-primary" href="{% url 'password_change'%}">Change Password</a>
                         <hr>
 
@@ -45,6 +43,6 @@
     </div>
 
 
-<a class="btn btn-primary btn-sm" href="{% url 'tasks'%}">Go back</a>
+    <a class="btn btn-outline-success" href="{% url 'tasks'%}" role="button">Go back</a>
 
 {% endblock content %}

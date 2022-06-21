@@ -1,11 +1,12 @@
 {% extends 'loginapp/main.html' %}
 {% block content %}
 
-<a class="btn btn-primary btn-sm" href="{% url 'tasks'%}">Go back</a>
 <form method="post">
     {% csrf_token %}
     <p>Are you sure you want to delete this task? "{{task}}"</p>
     <input class="btn btn-primary dltbt" type="submit" value="Delete"/>
 </form>
+
+<a class="btn btn-outline-success" href="{% url 'tasks'%}" role="button">Go back</a>
 
 {% endblock content %}
